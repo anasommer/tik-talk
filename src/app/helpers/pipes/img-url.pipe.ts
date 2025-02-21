@@ -1,12 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'imgUrl'
+  name: 'imgUrl',
 })
 export class ImgUrlPipe implements PipeTransform {
+  transform(value: string | null): string | null {
+    if (!value) return null;
 
-  transform(value: unknown, ...args: unknown[]): unknown {
-    return null;
+    return `https://icherniakov.ru/yt-course/${value}`;
   }
-
 }
