@@ -12,7 +12,7 @@ import { Profile } from './data/interfaces/profile.interface';
 })
 export class AppComponent {
   profileService = inject(ProfileService);
-  profiles: any = [];
+  profiles: Profile[] = [];
 
   constructor() {
     this.profileService.getTestAccounts().subscribe((val) => {
