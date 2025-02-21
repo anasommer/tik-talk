@@ -2,6 +2,7 @@ import { ProfileService } from './data/services/profile.service';
 import { Component, inject } from '@angular/core';
 import { ProfileCardComponent } from './common-ui/profile-card/profile-card.component';
 import { CommonModule } from '@angular/common';
+import { Profile } from './data/interfaces/profile.interface';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ import { CommonModule } from '@angular/common';
 })
 export class AppComponent {
   profileService = inject(ProfileService);
-  profiles: any = [];
+  profiles: Profile[] = [];
 
   constructor() {
     this.profileService.getTestAccounts().subscribe((val) => {
