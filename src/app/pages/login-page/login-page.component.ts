@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { AuthService } from '../../auth/auth/auth.service';
+import { from, map, take } from 'rxjs';
 
 @Component({
   selector: 'app-login-page',
@@ -20,6 +21,8 @@ export class LoginPageComponent {
     username: new FormControl(null, Validators.required),
     password: new FormControl(null, Validators.required),
   });
+
+  constructor() {}
 
   onSubmit() {
     if (this.form.valid) {
