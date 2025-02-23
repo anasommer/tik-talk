@@ -1,13 +1,24 @@
-<form action="" class="login-form">
+<form class="login-form" [formGroup]="form" (ngSubmit)="onSubmit()">
   <h1 class="h1 mb60">Enter</h1>
   <label for="" class="tt-control-label mb16">
-    Enter username <input type="text" placeholder="Login" class="tt-input" />
+    Enter username
+    <input
+      type="text"
+      placeholder="Login"
+      class="tt-input"
+      formControlName="username"
+    />
   </label>
   <label for="" class="tt-control-label mb32">
     Password
-    <input type="password" placeholder="Password" class="tt-input" />
+    <input
+      type="password"
+      placeholder="Password"
+      class="tt-input"
+      formControlName="password"
+    />
   </label>
-  <button class="btn btn-shadow">Enter</button>
+  <button class="btn btn-shadow" type="submit">Enter</button>
 </form>
 
 <img src="/assets/images/svg/logo-big.svg" alt="logo" />
