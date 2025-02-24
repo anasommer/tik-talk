@@ -18,7 +18,9 @@ export class AuthService {
   get isAuth() {
     if (!this.token) {
       this.token = this.cookieService.get('token');
+      console.log(this.token);
     }
+
     return !!this.token;
   }
 
@@ -29,11 +31,16 @@ export class AuthService {
 
     return this.http.post<TokenResponse>(`${this.baseApiUrl}/token`, fd).pipe(
       tap((val) => {
-        this.token = val.accessToken;
-        this.refreshToken = val.refreshToken;
-
-        this.cookieService.set('token', val.accessToken);
-        this.cookieService.set('refreshToken', val.refreshToken);
+        console.log('Login response:', val);
+        const tokenResponse = {
+          accessToken: val.access_token,
+          refreshToken: val.refresh_token,
+          tokenType: val.token_type,
+        };
+        this.token = tokenResponse.accessToken;
+        this.refreshToken = tokenResponse.refreshToken;
+        this.cookieService.set('token', tokenResponse.accessToken);
+        this.cookieService.set('refreshToken', tokenResponse.refreshToken);
       })
     );
   }
